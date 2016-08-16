@@ -126,7 +126,6 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
@@ -159,13 +158,6 @@
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-maven-plugin</artifactId>
           <version>1.1.0.Alpha11</version>
-          <configuration>
-            <filename>${project.build.finalName}.war</filename>
-            <hostname>localhost</hostname>
-            <port>9990</port>
-            <username>administrator</username>
-            <password>Teste</password>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
@@ -173,7 +165,6 @@
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
-        <version>1.1.0.Alpha11</version>
         <executions>
           <execution>
             <id>undeploy</id>
@@ -182,7 +173,11 @@
               <goal>undeploy</goal>
             </goals>
             <configuration>
-              <ignoreMissingDeployment>true</ignoreMissingDeployment>
+              <filename>${project.build.finalName}.war</filename>
+              <hostname>localhost</hostname>
+              <port>9990</port>
+              <username>rafael</username>
+              <password>Macabeia@1982!</password>
             </configuration>
           </execution>
           <execution>
@@ -191,96 +186,13 @@
             <goals>
               <goal>deploy</goal>
             </goals>
-          </execution>
-
-          <!-- Deploy the JDBC library -->
-          <execution>
-            <id>deploy-driver</id>
-            <phase>install</phase>
             <configuration>
-              <groupId>postgresql</groupId>
-              <artifactId>postgresql</artifactId>
-              <version>postgresql-9.1-901-1.jdbc4</version>
+              <filename>${project.build.finalName}.war</filename>
+              <hostname>localhost</hostname>
+              <port>9990</port>
+              <username>rafael</username>
+              <password>Macabeia@1982!</password>
             </configuration>
-            <goals>
-              <goal>deploy-artifact</goal>
-            </goals>
-          </execution>
-
-          <!-- Add a data source -->
-          <execution>
-            <id>add-datasource</id>
-            <phase>install</phase>
-            <configuration>
-              <address>subsystem=datasources,data-source=kronus</address>
-              <resources>
-                <resource>
-                  <enableResource>true</enableResource>
-                  <properties>
-                    <connection-url>jdbc:postgresql://localhost/kronus</connection-url>
-                    <jndi-name>java:jboss/kronus</jndi-name>
-                    <enabled>true</enabled>
-                    <enable>true</enable>
-                    <user-name>kronus</user-name>
-                    <password>kronus</password>
-                    <driver-name>postgresql-9.1-901-1.jdbc4.jar</driver-name>
-                    <use-ccm>false</use-ccm>
-                  </properties>
-                </resource>
-              </resources>
-            </configuration>
-            <goals>
-              <goal>add-resource</goal>
-            </goals>
-          </execution>
-          <!-- Add an XA datasource -->
-          <execution>
-            <id>add-xa-datasource</id>
-            <phase>install</phase>
-            <configuration>
-              <address>subsystem=datasources</address>
-              <resources>
-                <resource>
-                  <address>xa-data-source=java:jboss/datasources/postgresDS</address>
-                  <enableResource>true</enableResource>
-                  <properties>
-                    <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
-                    <jndi-name>java:jboss/datasources/postgresDS</jndi-name>
-                    <enabled>true</enabled>
-                    <driver-name>postgresql.jar</driver-name>
-                  </properties>
-                  <resources>
-                    <resource>
-                      <address>xa-datasource-properties=DatabaseName</address>
-                      <properties>
-                        <value>kronus</value>
-                      </properties>
-                    </resource>
-                    <resource>
-                      <address>xa-datasource-properties=ServerName</address>
-                      <properties>
-                        <value>localhost</value>
-                      </properties>
-                    </resource>
-                    <resource>
-                      <address>xa-datasource-properties=User</address>
-                      <properties>
-                        <value>dbuser</value>
-                      </properties>
-                    </resource>
-                    <resource>
-                      <address>xa-datasource-properties=Password</address>
-                      <properties>
-                        <value>supersecret</value>
-                      </properties>
-                    </resource>
-                  </resources>
-                </resource>
-              </resources>
-            </configuration>
-            <goals>
-              <goal>add-resource</goal>
-            </goals>
           </execution>
         </executions>
       </plugin>
