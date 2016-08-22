@@ -3,7 +3,6 @@ package br.com.empresa.app.kronus.conf;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -18,7 +17,7 @@ import br.com.empresa.app.kronus.controllers.IndexController;
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
-	public ViewResolver viewResolver() {
+	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 
 		resolver.setPrefix("/WEB-INF/views/");
