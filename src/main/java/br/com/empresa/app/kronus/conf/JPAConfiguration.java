@@ -24,6 +24,7 @@ public class JPAConfiguration {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		
 		em.setDataSource(dataSource);
+		//em.setPersistenceUnitName("PostgreSQLDS");
 		em.setPackagesToScan( new String[]{"br.com.empresa.app.kronus.models"});
 		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
