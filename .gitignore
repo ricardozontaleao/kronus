@@ -13,10 +13,6 @@ buildNumber.properties
 .mvn/timing.properties
 
 
-### Less ###
-*.css
-
-
 ### Java ###
 *.class
 
