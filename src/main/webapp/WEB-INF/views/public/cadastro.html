@@ -18,7 +18,7 @@
     <![endif]-->
 </head>
 <body>
-	<form method="post">
+	<form id="formCadastroEmpresa" action="salvar" method="post">
 		<div class="form-group">
 			<label for="cnpj">CNPJ</label>
 			<input type="text" class="form-control" id="cnpj" name="cnpj" placeholder="CNPJ">
@@ -27,7 +27,7 @@
 			<label for="razaoSocial">Razão Social</label>
 			<input type="text" class="form-control" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
 		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
+		<button id="formCadastroEmpresaButton" type="submit" class="btn btn-default">Submit</button>
 	</form>
 	<script src="resources/js/jquery-3.1.0.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
