@@ -197,7 +197,7 @@
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- PostgreSQL -->
 		<dependency>
 			<groupId>postgresql</groupId>

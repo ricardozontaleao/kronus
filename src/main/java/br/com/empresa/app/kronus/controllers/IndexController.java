@@ -17,7 +17,6 @@ import br.com.empresa.app.kronus.daos.EmpresaDAO;
 import br.com.empresa.app.kronus.models.Empresa;
 
 @Controller
-@RequestMapping("/")
 @Transactional
 public class IndexController {
 
@@ -35,13 +34,14 @@ public class IndexController {
 		return view;
 	}
 	
-	@RequestMapping(value="/cadastro" ,method=RequestMethod.GET)
+	@RequestMapping(value="/cadastro", method=RequestMethod.GET)
 	public String cadastro() {
 		return "public/cadastro";
 	}
 	
 	@RequestMapping(value="/salvar", method=RequestMethod.POST)
 	public String salvarEmresa( Empresa empresa ) {
+		System.out.println(empresa.getRazaoSocial());
 		logger.debug(empresa.getRazaoSocial());
 		logger.debug(empresa.getCnpj());
 		//dao.save(empresa);
