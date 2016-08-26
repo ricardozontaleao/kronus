@@ -1,6 +1,5 @@
-$(document).ready(
-		function() {
-
+$(document).ready(function() {
+	
 			var data = {}
 			data["query"] = $("#query").val();
 
@@ -29,18 +28,21 @@ $(document).ready(
 			});
 
 			$('#formCadastroEmpresaButton').click(function() {
-				var empresa = $("#empresa").serializeArray();
+				var empresa = {};
+				empresa["cnpj"] = $("#cnpj").val();
+				empresa["razaoSocial"] = $("#razaoSocial").val();
+				
 				$.ajax({
 					type : "POST",
 					contentType : "application/json",
 					url : "http://localhost:8080/kronus/salvar",
-					empresa: empresa,
+					empresa: JSON.stringify(empresa),
 					async : false,
 					dataType : "json",
 					success : function(empresa) {
-						//alert("success");
+						alert(empresa);
 						console.log(empresa);
-						//$("#formCadastroEmpresa").submit();
+						$("#formCadastroEmpresa").submit();
 					},
 					error : function(e) {
 						console.log("ERROR: ", e);

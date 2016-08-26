@@ -18,6 +18,7 @@ import br.com.empresa.app.kronus.models.Empresa;
 
 @Controller
 @Transactional
+@RequestMapping("/")
 public class IndexController {
 
 	private static final Logger logger = Logger.getLogger(IndexController.class);
@@ -40,7 +41,7 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value="/salvar", method=RequestMethod.POST)
-	public String salvarEmresa( Empresa empresa ) {
+	public String salvarEmpresa( Empresa empresa ) {
 		System.out.println(empresa.getRazaoSocial());
 		logger.debug(empresa.getRazaoSocial());
 		logger.debug(empresa.getCnpj());
