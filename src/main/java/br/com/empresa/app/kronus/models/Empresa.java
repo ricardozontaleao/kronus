@@ -13,7 +13,7 @@ public class Empresa {
 		super();
 	}
 
-	public Empresa(Integer cnpj, String razaoSocial) {
+	public Empresa(Long cnpj, String razaoSocial) {
 		super();
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
@@ -21,16 +21,16 @@ public class Empresa {
 
 	@Id
 	@Column(name = "cnpj")
-	private Integer cnpj;
+	private Long cnpj;
 
 	@Column(name = "razao_social")
 	private String razaoSocial;
 
-	public Integer getCnpj() {
+	public Long getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(Integer cnpj) {
+	public void setCnpj(Long cnpj) {
 		this.cnpj = cnpj;
 	}
 

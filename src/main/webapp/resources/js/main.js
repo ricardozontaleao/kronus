@@ -28,21 +28,20 @@ $(document).ready(function() {
 			});
 
 			$('#formCadastroEmpresaButton').click(function() {
-				var empresa = {};
-				empresa["cnpj"] = $("#cnpj").val();
-				empresa["razaoSocial"] = $("#razaoSocial").val();
+				var empresa = {
+						cnpj:$("#cnpj").val(),
+						razaoSocial:$("#razaoSocial").val()
+				};
 				
 				$.ajax({
 					type : "POST",
 					contentType : "application/json",
 					url : "http://localhost:8080/kronus/salvar",
-					empresa: JSON.stringify(empresa),
-					async : false,
+					data: JSON.stringify(empresa),
 					dataType : "json",
 					success : function(empresa) {
-						alert(empresa);
-						console.log(empresa);
-						$("#formCadastroEmpresa").submit();
+						alert(empresa.cnpj);
+						console.log(empresa.cnpj);
 					},
 					error : function(e) {
 						console.log("ERROR: ", e);

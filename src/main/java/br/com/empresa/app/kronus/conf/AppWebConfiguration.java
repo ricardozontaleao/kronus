@@ -16,11 +16,14 @@ import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.empresa.app.kronus.controllers.IndexController;
+import br.com.empresa.app.kronus.daos.EmpresaDAO;
 import br.com.empresa.app.kronus.viewresolver.JsonViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = { IndexController.class })
+@ComponentScan(basePackageClasses = { 
+		IndexController.class,
+		EmpresaDAO.class})
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
