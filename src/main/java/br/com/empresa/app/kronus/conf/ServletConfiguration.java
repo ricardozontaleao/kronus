@@ -7,13 +7,18 @@ public class ServletConfiguration extends AbstractAnnotationConfigDispatcherServ
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {RootConfig.class};
+		return new Class[] { 
+				SecurityConfiguration.class, 
+				RootConfig.class, 
+				AppWebConfiguration.class,
+				JPAConfiguration.class 
+			};
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {AppWebConfiguration.class, JPAConfiguration.class};
+		return new Class[] {};
 	}
 
 	@Override

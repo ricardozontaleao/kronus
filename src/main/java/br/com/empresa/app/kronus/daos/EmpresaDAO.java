@@ -5,12 +5,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import br.com.empresa.app.kronus.models.Empresa;
 
 @Repository
-public class EmpresaDAO {
+public class EmpresaDAO implements UserDetailsService {
 
 	@PersistenceContext
 	private EntityManager manager;
@@ -21,6 +24,20 @@ public class EmpresaDAO {
 
 	public void save(Empresa empresa) {
 		manager.persist(empresa);
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String cnpj) throws UsernameNotFoundException {
+
+		String jpql = "select e from Empresa where u.cnpj = :cnpj";
+
+		List<Empresa> empresas = manager.createQuery(jpql, Empresa.class).setParameter("cnpj", cnpj).getResultList();
+
+		if (empresas.isEmpty()) {
+			throw new UsernameNotFoundException("A empresa " + cnpj + " não foi encontrada.");
+		}
+
+		return empresas.get(0);
 	}
 
 }
